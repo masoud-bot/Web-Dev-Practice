@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Play Fair', sans-serif;
+    color: #F5F5F5;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgb(30, 30, 30);
+    text-align: center;
+
+}
+
+#images img {
+    border-radius: 10%;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 3px 8px;
+    margin: 1rem 0;
+    width: 15rem;
+    /*object-fit: cover;*/
+    clip-path: polygon(5px 5px, calc(100% - 5px) 5px, calc(100% - 5px) calc(100% - 5px), 5px calc(100% - 5px));
+
+}
+
+h1  {
+    margin: 1rem 0;
+}
+
+.tag-list {
+    list-style: none;
+}
+
+.tag-list li {
+    font-size: 0.7rem;
+    padding: 1rem 2rem;
+    background: rgba(60, 60, 60, 0.5);
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 5px 12px;
+}
+
+.scroller {
+    max-width: 80%;
+    /*outline: 3px solid lime;*/
+}
+
+.scroller__inner {
+    padding-block: 0.5rem;
+    display: flex;
+    gap:  1rem;
+    flex-wrap: wrap;
+}
+
+.scroller[data-animated="true"] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(
+            90deg,
+            transparent,
+            white 20%,
+            white 80%,
+            transparent
+    );
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 30s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroller[data-direction="right"] {
+    --_animation-direction: reverse;
+}
+
+.scroller[data-direction="left"] {
+    --_animation-direction: forwards;
+}
+
+.scroller[data-speed="fast"] {
+    --_animation-duration: 20s;
+}
+
+.scroller[data-speed="slow"] {
+    --_animation-duration: 60s;
+}
+
+@keyframes scroll {
+    to {
+        transform: translate(calc(-50% - 0.5rem));
+    }
+}
